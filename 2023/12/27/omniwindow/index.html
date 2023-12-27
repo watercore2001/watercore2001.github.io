@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1 补充知识ASIC：Application-Specific Integrated Circuit。针对特定应用定制设计的集成电路，与通用集成电路（如微处理器）不同，它具有特定功能或应用的优化设计。可编程交换机的架构：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1jm4y1w7w3&#x2F;?spm_id_from&#x3D;333.337.search-card.all.clickSALU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="omniwindow">
+<meta property="og:url" content="http://example.com/2023/12/27/omniwindow/index.html">
+<meta property="og:site_name" content="Welcome to Watercore&#39;s Blogs">
+<meta property="og:description" content="1 补充知识ASIC：Application-Specific Integrated Circuit。针对特定应用定制设计的集成电路，与通用集成电路（如微处理器）不同，它具有特定功能或应用的优化设计。可编程交换机的架构：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1jm4y1w7w3&#x2F;?spm_id_from&#x3D;333.337.search-card.all.clickSALU">
+<meta property="og:locale">
+<meta property="og:image" content="https://obsidian-pictures-1306255178.cos.ap-beijing.myqcloud.com/Pasted%20image%2020231226191340.png">
+<meta property="og:image" content="https://obsidian-pictures-1306255178.cos.ap-beijing.myqcloud.com/Pasted%20image%2020231226191833.png">
+<meta property="article:published_time" content="2023-12-27T08:18:21.000Z">
+<meta property="article:modified_time" content="2023-12-27T08:26:43.803Z">
+<meta property="article:author" content="watercore">
+<meta property="article:tag" content="papers">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://obsidian-pictures-1306255178.cos.ap-beijing.myqcloud.com/Pasted%20image%2020231226191340.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>omniwindow</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/12/27/helloworld/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/12/27/omniwindow/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/12/27/omniwindow/&text=omniwindow"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/12/27/omniwindow/&is_video=false&description=omniwindow"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=omniwindow&body=Check out this article: http://example.com/2023/12/27/omniwindow/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/27/omniwindow/&name=omniwindow&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/27/omniwindow/&t=omniwindow"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">1 补充知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">2 关键点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Fast-C-R"><span class="toc-number">3.</span> <span class="toc-text">3 Fast C&amp;R</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-AFR"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 AFR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-AFR-Operation"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 AFR Operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-SUB-WINDOW-SYNCHRONIZATION"><span class="toc-number">4.</span> <span class="toc-text">4 SUB-WINDOW SYNCHRONIZATION</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-STATE-MANAGEMENT"><span class="toc-number">5.</span> <span class="toc-text">5 STATE MANAGEMENT</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        omniwindow
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">watercore</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-12-27T08:18:21.000Z" class="dt-published" itemprop="datePublished">2023-12-27</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/papers/" rel="tag">papers</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="1-补充知识"><a href="#1-补充知识" class="headerlink" title="1 补充知识"></a>1 补充知识</h2><p>ASIC：Application-Specific Integrated Circuit。针对特定应用定制设计的集成电路，与通用集成电路（如微处理器）不同，它具有特定功能或应用的优化设计。<br>可编程交换机的架构：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jm4y1w7w3/?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1jm4y1w7w3/?spm_id_from=333.337.search-card.all.click</a><br>SALU：Stateful Arithmetic Logic Unit</p>
+<p><img src="https://obsidian-pictures-1306255178.cos.ap-beijing.myqcloud.com/Pasted%20image%2020231226191340.png" alt="Pasted image 20231226191340"><br>商用可编程交换机都基于 RMT （reconfigurable match-action table）架构：<br><img src="https://obsidian-pictures-1306255178.cos.ap-beijing.myqcloud.com/Pasted%20image%2020231226191833.png" alt="Pasted image 20231226191833"></p>
+<h2 id="2-关键点"><a href="#2-关键点" class="headerlink" title="2 关键点"></a>2 关键点</h2><p>G1：任意的窗口大小<br>G2：任意的窗口类型</p>
+<p>基于普通可编程交换机的现有遥测解决方案只支持固定大小的 tumbling window，这是因为交换机的内存和计算资源(具体来说就是 SALU 的数量)非常有限。<br>C1：每一个window的状态(例如：fk_buffer, fk_counter)存储在内存中。在collect时，需要遍历fk_buffer中所有的flowkey，生成对应的AFR；而在reset时，需要清空其状态，为下一个window做准备。由于可编程交换机的ASICs不提供遍历内存的指令，因此C&amp;R操作需要由交换机上的OS来实现，而交换机上的OS具有较大的延迟。（关键点在于ASICs不提供遍历fk_buffer的指令）<br>C2：同一个在不同交换机上应该属于同一个窗口。现有方案使用PTP算法，该受到网络工作负载的显著影响，因此其存在几百ns到几百ms的误差。<br>C3：由于可编程交换机上的内存和计算资源有限，无法使用较大的窗口大小。<br>C4：RMT流水线采用 single-pass 的方式，这意味着我们每个包只会经过一次。如果使用 slide_window 的方式，一个packet可能会同时存在两个窗口中，而这个packet只会pass一次，所以我们需要在这一次pass中同时计算其对两个窗口的状态的贡献，也就是说我们必须同时维护两个窗口的state，这需要较大的内存。又因为一个packet在一个SALU只能读取一个位置的内存，因此如果这两个窗口的state在不同位置，我们需要使用两倍的SALU数量才能实现。这就导致了双倍的内存消耗和计算资源消耗。</p>
+<p>一个简单的设想：sub-window。但是会加剧上面的四个限制。<br>C1：由于sub-window的数量变多，C&amp;R的次数也会变多。<br>C2：由于sub-window的数量变多，需要更频繁地进行交换机之间的窗口同步<br>C3：每个sub-window都需要独立的内存来存储状态，因此需要更多的内存。<br>C4：每个sub-window都需要一个SALU来读取其存储在内存中的状态，因此需要更多的计算资源。</p>
+<p>如何解决？<br>核心思想：之所以需要更多的内存和计算资源，主要因为我们要<strong>同时</strong>维护很多的sub-window。如果C&amp;R操作的速度比处理单个sub-window的速度更快的话，我们其实只需要维护两个sub-window的状态，一个sub-window用于处理当前packet，第二个窗口则可以在此期间轻松地完成C&amp;R；如果C&amp;R操作非常快的话，我们甚至可以让第二个窗口等一会再做C&amp;R，之所以等一会是为了等那些迟到的乱序packet到达。<br>因此，首要目的就是增加C&amp;R操作的速度。其次，我们可以让这两个窗口占据一块连续内存，以减少对SALU的需要。</p>
+<h2 id="3-Fast-C-R"><a href="#3-Fast-C-R" class="headerlink" title="3 Fast C&amp;R"></a>3 Fast C&amp;R</h2><h3 id="3-1-AFR"><a href="#3-1-AFR" class="headerlink" title="3.1 AFR"></a>3.1 AFR</h3><p>控制平面如何合并sub-window的结果？目前有两种方案：</p>
+<ul>
+<li>直接合并子窗口的测量结果。不适用于异常检测任务。</li>
+<li>合并子窗口的状态，将其变为跨多个子窗口的状态。会放大误差。</li>
+</ul>
+<p>我们的方案：Application-derived Flow Record (AFR)。对于子窗口中每一个可能的流，我们计算其状态，子窗口合并时基于flowkey进行合并。<br>如何设置flowkey？五元组：source&#x2F;destination ip&#x2F;port, 上层协议<br>如何基于flowkey计算对应的状态？不在本文的讨论范围内，要求遥测应用的数据平面程序支持流查询。（对于不支持流查询的遥测应用，见第八章）<br>AFR的好处：</p>
+<ul>
+<li>能广泛适用于所有流级别的遥测应用</li>
+<li>精度高于之前的两种方法</li>
+<li>不用在控制平面查询状态（这一步由遥测应用的数据平面程序完成）</li>
+</ul>
+<h3 id="3-2-AFR-Operation"><a href="#3-2-AFR-Operation" class="headerlink" title="3.2 AFR Operation"></a>3.2 AFR Operation</h3><p>数据平面使用一个小数组来存储flowkey，如果一个flowkey太长了，直接将其克隆发给控制平面。<br>当一个窗口结束测量的时候，我们等待一段时间（等待乱序的packet到达）后开始C&amp;R的操作。Collect 操作就是遍历flowkey,生成AFR,将其传给控制平面；Reset操作就是清空flowkey和其对应的AFR。<br>关键点在于使用 recirculate 操作来模拟“遍历flowkey”的操作。</p>
+<p>collect具体操作如下：控制平面发一个ingect packet给数据平面，数据平面不断recirculate这个packet,每recirculate一次，就更新其元数据中的flowkey, 将该flowkey对应的AFR数据append到这个包后面。由于给packte只有一个flowkey字段，因此每recirculate一次，就要把这个包的副本发给控制平面，这样控制平面才知道这个包的后面的AFR是哪一个flowkey。事实上，为了加快速度，同时存在多个inject packte，实验表明16个inject packet就足以获取理想的速度，而16个packet不会带来太多的流量。<br>reset操作与collect操作几乎相同。</p>
+<p>如何合并AFR：多种方式，不重要。</p>
+<h2 id="4-SUB-WINDOW-SYNCHRONIZATION"><a href="#4-SUB-WINDOW-SYNCHRONIZATION" class="headerlink" title="4 SUB-WINDOW SYNCHRONIZATION"></a>4 SUB-WINDOW SYNCHRONIZATION</h2><p>由第一个交换机决定每个packet所在窗口，并将该信息写入packet。<br>乱序的packet使用前面所述的等待一段时间来处理，如果乱序的packet超过了等待时间，就只能发给控制器，让控制器决定如何处理，幸运的是，这中数据包非常少。<br>那么第一个交换机如何决定每个packet所在窗口呢？<br>四种方法，不重要。<br>之后的交换机当见到一个新窗口的packet时，则启动当前窗口的terminate阶段，开始测量新窗口。</p>
+<h2 id="5-STATE-MANAGEMENT"><a href="#5-STATE-MANAGEMENT" class="headerlink" title="5 STATE MANAGEMENT"></a>5 STATE MANAGEMENT</h2><p>如前所述，只维护两个窗口的状态，同时这两个窗口的内存是连续的，就可以在一个SALU中同时访问这两个窗口。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">1 补充知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%B3%E9%94%AE%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">2 关键点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Fast-C-R"><span class="toc-number">3.</span> <span class="toc-text">3 Fast C&amp;R</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-AFR"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 AFR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-AFR-Operation"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 AFR Operation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-SUB-WINDOW-SYNCHRONIZATION"><span class="toc-number">4.</span> <span class="toc-text">4 SUB-WINDOW SYNCHRONIZATION</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-STATE-MANAGEMENT"><span class="toc-number">5.</span> <span class="toc-text">5 STATE MANAGEMENT</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2023/12/27/omniwindow/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2023/12/27/omniwindow/&text=omniwindow"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2023/12/27/omniwindow/&is_video=false&description=omniwindow"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=omniwindow&body=Check out this article: http://example.com/2023/12/27/omniwindow/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2023/12/27/omniwindow/&title=omniwindow"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2023/12/27/omniwindow/&name=omniwindow&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2023/12/27/omniwindow/&t=omniwindow"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    watercore
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
